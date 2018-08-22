@@ -2,7 +2,7 @@
   "name": "adidas",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://stefanomiccoli.github.io/react-challenge/",
+  "homepage": "https://smiccoli-reach-challenge.surge.sh",
   "dependencies": {
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
@@ -55,7 +55,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "deploysurge": "cd dir && surge"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.5.1",

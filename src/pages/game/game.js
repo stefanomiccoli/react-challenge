@@ -15,15 +15,13 @@ export default class Game extends Component {
     this.changeDifficulty = this.changeDifficulty.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.level !== prevProps.level && this.props.level === 0) {
-      this.setState(this.resetGame());
-    }
-  }
-
+  /**
+   * Callback for user interaction on child component Grid. 
+   * Prepare next level if correct, open "Game Over" modal if wrong
+   * @param selectedIndex 0-based index of the selected grid cell
+   */
   onUserClick(selectedIndex) {
     if (selectedIndex === this.state.selected) {
-      console.log("success, go to level", this.state.level + 1);
       this.setState(this.prepareLevel(this.state.level + 1, this.state.difficulty));
     } else {
       this.setState({
@@ -34,10 +32,12 @@ export default class Game extends Component {
   }
 
   closeScoreModal() {
+    // on modal close, start a new game
     this.setState(this.resetGame());
   }
 
   changeDifficulty(event) {
+    // start a new game with the updated difficulty
     const newState = this.resetGame(event.target.value);
     this.setState(newState);
   }
@@ -51,6 +51,9 @@ export default class Game extends Component {
     };
   }
 
+  /**
+   * Prepare state values that define the level (grid size, colors, index of correct cell...)
+   */
   prepareLevel(level, difficulty) {
     const baseColor = utils.getRandomColor();
     const gridSize = this.startSize + level;

@@ -5,16 +5,16 @@ import leaderboardUtils from "../shared/PersistenceUtils";
 export default class GameOverModal extends Component {
   constructor(props) {
     super(props);
-    this.addScoreToLeaderboard = this.addScoreToLeaderboard.bind(this);
-    this.nickname = React.createRef();
     this.state = {
-      submitted: false
+      submitted: false,
+      nickname: ""
     };
+    this.addScoreToLeaderboard = this.addScoreToLeaderboard.bind(this);
   }
 
   addScoreToLeaderboard = event => {
     event.preventDefault();
-    leaderboardUtils.registerScore(this.nickname.current.value, this.props.score, this.props.elapsedTime);
+    leaderboardUtils.registerScore(this.state.nickname, this.props.score, this.props.elapsedTime);
 
     this.setState({
       submitted: true
@@ -40,7 +40,15 @@ export default class GameOverModal extends Component {
           {!this.state.submitted &&
             leaderboardUtils.isEligible(this.props.score) && (
               <form className="w3-container w3-section" onSubmit={this.addScoreToLeaderboard}>
-                <input ref={this.nickname} className="w3-input w3-border w3-margin-bottom" type="text" placeholder="add your name to the hall of fame" />
+                <input
+                  className="w3-input w3-border w3-margin-bottom"
+                  value={this.state.nickname}
+                  onChange={e => {
+                    this.setState({ nickname: e.target.value });
+                  }}
+                  type="text"
+                  placeholder="add your name to the hall of fame"
+                />
                 <button className="w3-button w3-block w3-green">Submit</button>
               </form>
             )}

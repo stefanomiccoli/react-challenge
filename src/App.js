@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
-
+    
 import Header from "./layout/header";
 import Game from "./pages/game/game";
 import Board from "./pages/leaderboard/board";

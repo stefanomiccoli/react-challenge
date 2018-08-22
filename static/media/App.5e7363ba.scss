@@ -1,0 +1,23 @@
+.w3-modal.always-on {
+  display: block;
+  input: {
+    max-width: 300px;
+  }
+}
+
+#app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  .w3-bar .w3-bar-item {
+    width: 50%
+  }
+}
+
+main {
+  flex: 1;
+  position: relative;
+}

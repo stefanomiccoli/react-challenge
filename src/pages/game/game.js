@@ -16,7 +16,7 @@ export default class Game extends Component {
   }
 
   /**
-   * Callback for user interaction on child component Grid. 
+   * Callback for user interaction on child component Grid.
    * Prepare next level if correct, open "Game Over" modal if wrong
    * @param selectedIndex 0-based index of the selected grid cell
    */
@@ -75,11 +75,11 @@ export default class Game extends Component {
         <div className="select-difficulty w3-block">
           <div className="w3-row">
             <div className="w3-col" style={{ width: "150px" }}>
-              <button className="w3-button" onClick={() => window.startAutoplay(1000)}>
+              <button className="w3-button w3-small" onClick={() => window.startAutoplay(1000)}>
                 cheat ON
               </button>
               <br />
-              <button className="w3-button" onClick={() => window.stopAutoplay()}>
+              <button className="w3-button w3-small" onClick={() => window.stopAutoplay()}>
                 cheat OFF
               </button>
             </div>
